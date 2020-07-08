@@ -16,10 +16,15 @@ You will have to make a class Book and a class Recipe
 Let’s describe the Recipe class. It has some attributes:
 
 • name (str)
+
 • cooking_lvl (int) : range 1 to 5
+
 • cooking_time (int) : in minutes (no negative numbers)
+
 • ingredients (list) : list of all ingredients each represented by a string
+
 • description (str) : description of the recipe
+
 • recipe_type (str) : can be “starter”, “lunch” or “dessert”.
 
 You have to initialize the object Recipe and check all its values, only the description can be empty.
@@ -46,8 +51,11 @@ return txt
 The Book class also has some attributes:
 
 • name (str)
+
 • last_update (datetime)
+
 • creation_date (datetime)
+
 • recipes_list (dict) : a dictionnary why 3 keys: “starter”, “lunch”, “dessert”.
 
 You will have to implement some methods in Book:
@@ -70,12 +78,18 @@ You will have to handle the error if the arg passed in add_recipe is not a Recip
 
 You will have to make a class and its children.
 Create a GotCharacter class and initialize it with the following attributes:
+
 • first_name
+
 • is_alive (by default is True)
+
 Pick up a GoT House (e.g., Stark, Lannister. . . ). Create a child class that inherits from GotCharacter and
 define the following attributes:
+
 • family_name (by default should be the same as the Class)
+
 • house_words (e.g., the House words for the Stark House is: “Winter is Coming”)
+
 Example:
 
 ```python
@@ -87,8 +101,11 @@ self.house_words = "Winter is Coming"
 ```
 
 Add two methods to your child class:
+
 • print_house_words: prints to screen the House words
+
 • die: changes the value of is_alive to False
+
 Running commands in the Python console, an example of what you should get:
 
 ```python
@@ -114,5 +131,3 @@ Feel free to create other children of GotCharacter.
 >>> print(arya.__doc__)
 A class representing the Stark family. Or when bad things happen to good people.
 ```
-
-
