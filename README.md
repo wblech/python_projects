@@ -28,8 +28,6 @@ Exercise 08 - S.O.S
 
 Exercise 09 - Secret number
 
-Exercise 10 - Loading bar!
-
 ## Day 01
 
 Practicing basic OOP:
