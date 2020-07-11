@@ -134,6 +134,8 @@ A class representing the Stark family. Or when bad things happen to good people.
 
 ## Ex02 - The Vector
 
+forbidden: Numpy
+
 You will provide a testing file to prove that your class works as expected.
 You will have to create a helpful class, with more options and providing enhanced ease of use for the user.
 In this exercise, you have to create a Vector class. The goal is to have vectors and be able to perform
@@ -189,3 +191,153 @@ __rmul__
 • Mutiplication between two vectors of same dimensons (m * 1)
 
 Don’t forget to handle all kind of errors properly!
+
+## Ex 03 - The Matrix
+
+forbidden: Numpy
+
+You will provide a testing file to prove that your class works as expected.
+You will have to create a helpful class, with more options and providing enhanced ease of use for the user.
+In this exercise, you have to create a Matrix class. The goal is to have matrices and be able to perform both
+matrix-matrix operation and matrix-vector operations with them.
+
+```python
+>> m1 = Matrix([[0.0, 1.0, 2.0, 3.0],
+[0.0, 2.0, 4.0, 6.0]])
+>> m2 = Matrix([[0.0, 1.0],
+[2.0, 3.0],
+[4.0, 5.0],
+[6.0, 7.0]])
+>> print(m1 * m2)
+(Matrix [[28., 34.], [56., 68.]])
+```
+It has 2 attributes:
+• data : list of lists -> the elements stored in the matrix
+• shape : by shape we means the dimensions of the matrix as a tuple (rows, columns) -> Matrix([[0.0,
+1.0], [2.0, 3.0], [4.0, 5.0]]).shape == (3, 2)
+You should be able to initialize the object with:
+• the elements of the matrix as a list of lists: Matrix([[0.0, 1.0, 2.0, 3.0], [4.0, 5.0, 6.0, 7.0]])
+-> the dimensions of this matrix are then (2, 4)
+• a shape Matrix((3, 3)) -> the matrix will be filled by default with zeroes
+• the expected elements and shape Matrix([[0.0, 1.0, 2.0], [3.0, 4.0, 5.0], [6.0, 7.0, 8.0]],
+(3, 3))
+You will implement all the following built-in functions (called ‘magic methods’) for your Matrix class:
+
+```python
+__add__
+__radd__
+# add : vectors and matrices, can have errors with vectors and matrices.
+__sub__
+__rsub__
+# sub : vectors and matrices, can have errors with vectors and matrices.
+__truediv__
+__rtruediv__
+# div : only scalars.
+__mul__
+__rmul__
+# mul : scalars, vectors and matrices , can have errors with vectors and matrices,
+# return a Vector if we perform Matrix * Vector (dot product)
+__str__
+__repr__
+```
+
+### Matrix - vector authorized operations are:
+
+• Multiplication between a (m * n) matrix and a (n * 1) vector - Not implemented yet
+
+### Matrix - matrix authorized operations are:
+
+• Addition between two matrices of same dimension (m * n)
+
+• Substraction between two matrices of same dimension (m * n)
+
+• Multiplication or division between one matrix (m * n) and one scalar (1 * 1) - Not implemented yet
+
+• Mutiplication between two matrices of compatible dimension: (m * n) and (n * p)
+
+##Ex04 - Generator!
+
+forbidden func: random
+
+Code a function called generator that takes a text as input, uses the string sep as a splitting parameter, and
+yields the resulting substrings.
+The function can take an optional argument.
+The options are:
+
+• “shuffle”: shuffle the list of words.
+
+• “unique”: return a list where each word appears only once.
+
+• “ordered”: alphabetically sort the words.
+
+```python
+# function prototype
+def generator(text, sep=" ", option=None):
+'''Option is an optional arg, sep is mandatory'''
+```
+
+You can only call one option at a time.
+
+```python
+>> text = "Le Lorem Ipsum est simplement du faux texte."
+>> for word in generator(text, sep=" "):
+... print(word)
+...
+Le
+Lorem
+Ipsum
+est
+simplement
+du
+faux
+texte.
+>> for word in generator(text, sep=" ", option="shuffle"):
+... print(word)
+...
+simplement
+texte.
+est
+faux
+Le
+Lorem
+Ipsum
+du
+>> for word in generator(text, sep=" ", option="ordered"):
+... print(word)
+...
+Ipsum
+Le
+Lorem
+du
+est
+faux
+simplement
+texte.
+```
+
+The function should return “ERROR” one time if the text argument is not a string, or if the option argument
+is not valid.
+
+##Ex05 - Working with lists
+
+forbidden: while
+
+Code a class Evaluator, that has two static functions named: zip_evaluate and enumerate_evaluate.
+The goal of these 2 functions is to compute the sum of the lengths of every words of a given list weighted by a
+list a coefs.
+The lists coefs and words have to be the same length. If this is not the case, the function should return -1.
+You have to obtain the desired result using zip in the zip_evaluate function, and with enumerate in the
+enumerate_evaluate function.
+
+```python
+>> from eval import Evaluator
+>>
+>> words = ["Le", "Lorem", "Ipsum", "est", "simple"]
+>> coefs = [1.0, 2.0, 1.0, 4.0, 0.5]
+>> Evaluator.zip_evaluate(coefs, words)
+32.0
+>> words = ["Le", "Lorem", "Ipsum", "n'", "est", "pas", "simple"]
+>> coefs = [0.0, -1.0, 1.0, -12.0, 0.0, 42.42]
+>> Evaluator.enumerate_evaluate(coefs, words)
+-1
+```
